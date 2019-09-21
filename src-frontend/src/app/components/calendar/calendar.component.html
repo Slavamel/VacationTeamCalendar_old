@@ -1,6 +1,6 @@
 <div class="calendar">
   <div class="year">{{year}}</div>
-  <div class="month" *ngFor="let month of monthes">
+  <div class="month" *ngFor="let month of monthes; index as monthNum">
     <div class="month-name">{{ month.name }}</div>
     <div class="day-name">MON</div>
     <div class="day-name">TUE</div>
@@ -12,7 +12,7 @@
 
     <ng-container *ngFor="let weeks of month.weeks">
       <ng-container *ngFor="let day of weeks; index as i">
-        <div class="date" [ngClass]="{ holiday: isHoliday(i, day.isHoliday) }">{{day.date}}</div>
+        <div id="{{getDateId(monthNum, day.date)}}" class="date" [ngClass]="{ holiday: isHoliday(i, day.isHoliday) }">{{day.date}}</div>
       </ng-container>
     </ng-container>
 

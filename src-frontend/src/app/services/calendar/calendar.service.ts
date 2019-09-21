@@ -24,7 +24,6 @@ export class CalendarService {
     "December"
   ];
 
-
   getCalendar(year: number, holidays: Holiday[]): Month[] {
     let result: Month[] = [];
     this.holidays = holidays;

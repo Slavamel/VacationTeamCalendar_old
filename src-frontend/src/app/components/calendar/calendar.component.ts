@@ -5,6 +5,7 @@ import { HolidayServiceBase } from 'src/app/services/holiday/holiday.service.bas
 import { Month } from 'src/app/models/month.model';
 import { UserServiceBase } from 'src/app/services/user/user.service.base';
 import { User } from 'src/app/models/user.model';
+import { StyleService } from 'src/app/services/style/style.service';
 
 @Component({
   selector: 'app-calendar',
@@ -19,7 +20,8 @@ export class CalendarComponent implements OnInit {
   constructor(
     private calendarService: CalendarService, 
     private holidayService: HolidayServiceBase,
-    private userService: UserServiceBase) { }
+    private userService: UserServiceBase,
+    private styleService: StyleService) { }
 
   ngOnInit() {
     this.holidayService.getHolidays()
@@ -31,10 +33,16 @@ export class CalendarComponent implements OnInit {
         this.users.forEach(user => {
           user.isChecked = true;
         });
+        this.styleService.setUsersStyles(users);
       });
   }
 
   isHoliday(dayNumber: number, isHoliday: boolean): boolean {
     return dayNumber > 4 || isHoliday;
+  }
+
+  getDateId(monthNum: number, date: number): string {
+    if (!date) return "";
+    return "date-" + (monthNum + 1) + "-" + date;
   }
 }

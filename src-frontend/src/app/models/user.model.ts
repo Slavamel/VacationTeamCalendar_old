@@ -4,6 +4,6 @@ export class User {
   id: number;
   name: string;
   color: string;
-  vacation: Holiday[];
+  vacation: Holiday;
   isChecked: boolean;
 }

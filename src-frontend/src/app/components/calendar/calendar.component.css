@@ -16,8 +16,8 @@
 
 .month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(8, 25px);
+  grid-template-columns: repeat(7, 30px);
+  grid-template-rows: repeat(8, 30px);
 }
 
 .month-name {
@@ -41,9 +41,9 @@
 }
 
 .date {
-  align-self: center;
-  padding: 7px;
-  border-radius: 50px;
+  place-self: stretch;
+  border-radius: 100%;
+  line-height: 2;
 }
 
 .holiday {
