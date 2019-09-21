@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { Day } from 'src/app/models/day.model';
 import { Month } from 'src/app/models/month.model';
+import { Holiday } from 'src/app/models/holiday.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CalendarService {
-  private holidays;
+  private holidays: Holiday[];
   private monthNames = [
     "January", 
     "February", 
@@ -23,22 +22,17 @@ export class CalendarService {
     "October", 
     "November", 
     "December"
-  ]
+  ];
 
-  constructor(private http: HttpClient) { }
 
-  getCalendarForYear(year: number, holidays) {
-    let result = [];
+  getCalendar(year: number, holidays: Holiday[]): Month[] {
+    let result: Month[] = [];
     this.holidays = holidays;
     for(let i=1; i<13; i++) {
       result.push(this.getMonth(i, year));
     }
 
     return result;
-  }
-
-  getHolidays(): Promise<any> {
-    return this.http.get("assets/mocks/holidays.json").toPromise();
   }
 
   private getMonth(monthNumber: number, year: number): Month {
@@ -71,7 +65,7 @@ export class CalendarService {
     return result;
   }
 
-  private isHoliday(monthNumber: number, day: number) {
+  private isHoliday(monthNumber: number, day: number): boolean {
     const monthHolidays: number[] = this.holidays[monthNumber.toString()];
     const result = monthHolidays ? monthHolidays.includes(day) : false;
     return result;
