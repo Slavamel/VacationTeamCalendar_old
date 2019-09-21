@@ -5,6 +5,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 35px repeat(3, 1fr);
   grid-gap: 10px 20px;
+  margin-bottom: 50px;
 }
 
 .year {
@@ -47,4 +48,37 @@
 
 .holiday {
   color: red;
+}
+
+.users {
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  margin-right: 10px;
+}
+
+.user label {
+  display: block;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.user label:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.user input {
+  display: none;
+}
+
+.user input:not(:checked)+label {
+  background-color: transparent !important;
+  color: #000;
 }

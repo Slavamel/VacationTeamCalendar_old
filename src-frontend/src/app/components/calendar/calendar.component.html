@@ -18,3 +18,13 @@
 
   </div>
 </div>
+
+<div class="users">
+  <div class="user" *ngFor="let user of users">
+      <input 
+        [id]="user.id" 
+        [(ngModel)]="user.isChecked"
+        type="checkbox">
+    <label [style.background-color]="user.color" [for]="user.id">{{ user.name }}</label>
+  </div>
+</div>
