@@ -24,6 +24,7 @@
       <input 
         [id]="user.id" 
         [(ngModel)]="user.isChecked"
+        (change)="onUserClicked(user, $event.target.checked)"
         type="checkbox">
     <label [style.background-color]="user.color" [for]="user.id">{{ user.name }}</label>
   </div>

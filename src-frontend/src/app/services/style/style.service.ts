@@ -7,9 +7,36 @@ import { User } from 'src/app/models/user.model';
 export class StyleService {
   setUsersStyles(users: User[]): void {
     this.addGlobalCalsses(users);
-    this.setClass(users);
+    for(let i = 0; i < users.length; i++) {
+      this.addUserStyles(users[i]);
+    }
   }
 
+  removeUserStyles(user: User): void {
+    let month: any;
+    for(month in user.vacation) {
+      let daysArr = user.vacation[month];
+      for(let i = 0; i < daysArr.length; i++) {
+        var id = `date-${month}-${daysArr[i]}`;
+        var elem = document.getElementById(id);
+        let className = `user-${user.id}`;
+        elem.classList.remove(className);
+      }
+    }
+  }
+
+  addUserStyles(user: User): void {
+    let month: any;
+    for(month in user.vacation) {
+      let daysArr = user.vacation[month];
+      for(let i = 0; i < daysArr.length; i++) {
+        var id = `date-${month}-${daysArr[i]}`;
+        var elem = document.getElementById(id);
+        let className = `user-${user.id}`;
+        elem.classList.add(className);
+      }
+    }
+  }
   private addGlobalCalsses(users: User[]): void {
     let style = document.createElement('style');
     for(let i = 0; i < users.length; i++) {
@@ -23,21 +50,5 @@ export class StyleService {
       }
     }
     document.head.appendChild(style);
-  }
-
-  private setClass(users: User[]) {
-    let month: any;
-    for(let i = 0; i < users.length; i++) {
-      let user = users[i];
-      for(month in user.vacation) {
-        let daysArr = user.vacation[month];
-        for(let i = 0; i < daysArr.length; i++) {
-          var id = `date-${month}-${daysArr[i]}`;
-          var elem = document.getElementById(id);
-          let className = `user-${user.id}`;
-          elem.classList.add(className);
-        }
-      }
-    }
   }
 }

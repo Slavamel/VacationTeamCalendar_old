@@ -45,4 +45,12 @@ export class CalendarComponent implements OnInit {
     if (!date) return "";
     return "date-" + (monthNum + 1) + "-" + date;
   }
+
+  onUserClicked(user: User, isChecked: boolean): void {
+    if (isChecked) {
+      this.styleService.addUserStyles(user);
+    } else {
+      this.styleService.removeUserStyles(user);
+    }
+  }
 }
