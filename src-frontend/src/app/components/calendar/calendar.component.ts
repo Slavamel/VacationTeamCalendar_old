@@ -28,13 +28,7 @@ export class CalendarComponent implements OnInit {
       .then((holidays) => this.monthes = this.calendarService.getCalendar(2019, holidays));
 
     this.userService.getUsers()
-      .then((users) => {
-        this.users = users;
-        this.users.forEach(user => {
-          user.isChecked = true;
-        });
-        this.styleService.setUsersStyles(users);
-      });
+      .then((users) => this.handleGetUsersResponse(users));
   }
 
   isHoliday(dayNumber: number, isHoliday: boolean): boolean {
@@ -52,5 +46,13 @@ export class CalendarComponent implements OnInit {
     } else {
       this.styleService.removeUserStyles(user);
     }
+  }
+
+  private handleGetUsersResponse(users: User[]): void {
+    this.users = users;
+    this.users.forEach(user => {
+      user.isChecked = true;
+    });
+    this.styleService.setUsersStyles(users);
   }
 }
