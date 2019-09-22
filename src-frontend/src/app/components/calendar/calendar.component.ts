@@ -24,11 +24,7 @@ export class CalendarComponent implements OnInit {
     private styleService: StyleService) { }
 
   ngOnInit() {
-    this.holidayService.getHolidays()
-      .then((holidays) => this.monthes = this.calendarService.getCalendar(2019, holidays));
-
-    this.userService.getUsers()
-      .then((users) => this.handleGetUsersResponse(users));
+    this.init();
   }
 
   isHoliday(dayNumber: number, isHoliday: boolean): boolean {
@@ -46,6 +42,19 @@ export class CalendarComponent implements OnInit {
     } else {
       this.styleService.removeUserStyles(user);
     }
+  }
+
+  private init(): void {
+    this.holidayService.getCountryHolidays(this.year)
+      .then((holidays) => {
+        this.monthes = this.calendarService.getCalendar(2019, holidays);
+        this.getUsers();
+      });
+  }
+
+  private getUsers(): void {
+    this.userService.getUsers()
+      .then((users) => this.handleGetUsersResponse(users));
   }
 
   private handleGetUsersResponse(users: User[]): void {

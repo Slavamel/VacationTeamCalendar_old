@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { HolidayServiceBase } from './holiday.service.base';
 import { Holiday } from 'src/app/models/holiday.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Holiday } from 'src/app/models/holiday.model';
 export class HolidayServiceReal extends HolidayServiceBase {
   constructor(private http: HttpClient) { super();}
 
-  getHolidays(): Promise<Holiday[]> {
-    return this.http.get<Holiday[]>("assets/mocks/holidays.json").toPromise();
+  getCountryHolidays(year: number): Promise<Holiday[]> {
+    return this.http.get<Holiday[]>(environment.url + "/api/holiday/get-country-holidays/2019", {withCredentials: true}).toPromise();
   }
 }

@@ -1,16 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\VacationTeamCalendar.BLL\VacationTeamCalendar.BLL.csproj" />
     <ProjectReference Include="..\VacationTeamCalendar.Core\VacationTeamCalendar.Core.csproj" />
     <ProjectReference Include="..\VacationTeamCalendar.DAL\VacationTeamCalendar.DAL.csproj" />
   </ItemGroup>

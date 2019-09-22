@@ -10,7 +10,7 @@ import { Holiday } from 'src/app/models/holiday.model';
 export class HolidayServiceMock extends HolidayServiceBase {
   constructor(private http: HttpClient) { super();}
 
-  getHolidays(): Promise<Holiday[]> {
+  getCountryHolidays(year: number): Promise<Holiday[]> {
     return this.http.get<Holiday[]>("assets/mocks/holidays.json").toPromise();
   }
 }

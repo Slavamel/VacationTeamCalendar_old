@@ -6,7 +6,7 @@ import { Holiday } from 'src/app/models/holiday.model';
   providedIn: 'root',
 })
 export class HolidayServiceBase {
-  getHolidays(): Promise<Holiday[]> {
+  getCountryHolidays(year: number): Promise<Holiday[]> {
     throw new Error("Not implemented");
   }
 }

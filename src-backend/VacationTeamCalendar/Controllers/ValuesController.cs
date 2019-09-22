@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using VacationTeamCalendar.BLL.Services.HolidaysRetriever;
 
 namespace VacationTeamCalendar.API.Controllers
 {
@@ -9,11 +10,19 @@ namespace VacationTeamCalendar.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IHolidaysRetriever _holidaysRetriever;
+
+        public ValuesController(IHolidaysRetriever holidaysRetriever)
+        {
+            _holidaysRetriever = holidaysRetriever;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = _holidaysRetriever.GetCountryHolidays(2019);
+            return Ok(result);
         }
 
         // GET api/values/5

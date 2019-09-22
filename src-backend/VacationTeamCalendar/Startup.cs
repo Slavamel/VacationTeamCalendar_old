@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VacationTeamCalendar.BLL.Services.HolidaysRetriever;
 using VacationTeamCalendar.DAL.Contexts;
 
 namespace VacationTeamCalendar.API
@@ -22,6 +23,8 @@ namespace VacationTeamCalendar.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<MainDbContext>(options => options.UseSqlServer("Server=localhost;Database=VacationTeamCalendar;Trusted_Connection=True;"));
+
+            services.AddTransient<IHolidaysRetriever, HolidaysRetriever>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
