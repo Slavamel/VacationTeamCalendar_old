@@ -65,7 +65,9 @@ export class CalendarService {
   }
 
   private isHoliday(monthNumber: number, day: number): boolean {
-    const monthHolidays: number[] = this.holidays[monthNumber.toString()];
+    const holiday = this.holidays.filter((h) => h.month == monthNumber);
+    if (!holiday || holiday.length == 0) return false;
+    const monthHolidays: number[] = this.holidays.filter((h) => h.month == monthNumber)[0].days;
     const result = monthHolidays ? monthHolidays.includes(day) : false;
     return result;
   }
