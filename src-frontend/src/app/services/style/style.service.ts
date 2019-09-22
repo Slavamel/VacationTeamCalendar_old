@@ -21,6 +21,8 @@ export class StyleService {
         var elem = document.getElementById(id);
         let className = `user-${user.id}`;
         elem.classList.remove(className);
+        if (i == 0) elem.classList.remove('first-vacation-day');
+        if (i == (user.vacation[month].length - 1)) elem.classList.remove('last-vacation-day');
       }
     }
   }
@@ -34,6 +36,8 @@ export class StyleService {
         var elem = document.getElementById(id);
         let className = `user-${user.id}`;
         elem.classList.add(className);
+        if (i == 0) elem.classList.add('first-vacation-day');
+        if (i == (user.vacation[month].length - 1)) elem.classList.add('last-vacation-day');
       }
     }
   }
@@ -41,11 +45,12 @@ export class StyleService {
     let style = document.createElement('style');
     for(let i = 0; i < users.length; i++) {
       style.innerHTML += `.user-${users[i].id} { background-color: ${users[i].color}; }\n`
-      
+
       for(let k =0; k < users.length; k++) {
         if (k == i) { continue; }
         style.innerHTML += `.user-${users[i].id}.user-${users[k].id} { 
-          background: repeating-linear-gradient(45deg, ${users[i].color}, ${users[i].color} 5px, ${users[k].color} 5px, ${users[k].color} 10px); 
+          background: repeating-linear-gradient(0deg, ${users[i].color}, ${users[i].color} 2px, ${users[k].color} 2px, ${users[k].color} 4px); 
+          border-radius: 0;
         }\n`;
       }
     }

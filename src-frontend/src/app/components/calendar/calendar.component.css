@@ -42,7 +42,6 @@
 
 .date {
   place-self: stretch;
-  border-radius: 100%;
   line-height: 2;
 }
 
@@ -81,4 +80,12 @@
 .user input:not(:checked)+label {
   background-color: transparent !important;
   color: #000;
+}
+
+.first-vacation-day {
+  border-top-left-radius: 30%;
+}
+
+.last-vacation-day {
+  border-bottom-right-radius: 30%;
 }
