@@ -48,7 +48,7 @@ export class StyleService {
       for(let k =0; k < users.length; k++) {
         if (k == i) { continue; }
         style.innerHTML += `.user-${users[i].id}.user-${users[k].id} { 
-          background: repeating-linear-gradient(0deg, ${users[i].color}, ${users[i].color} 2px, ${users[k].color} 2px, ${users[k].color} 4px); 
+          background: repeating-linear-gradient(0deg, ${users[i].color}, ${users[i].color} 5px, ${users[k].color} 5px, ${users[k].color} 10px); 
           border-radius: 0;
         }\n`;
       }
