@@ -53,7 +53,7 @@ export class CalendarComponent implements OnInit {
   }
 
   private getUsers(): void {
-    this.userService.getUsers()
+    this.userService.getUsers(this.year)
       .then((users) => this.handleGetUsersResponse(users));
   }
 

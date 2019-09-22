@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserServiceMock extends UserServiceBase {
   constructor(private http: HttpClient) { super(); }
 
-  getUsers(): Promise<User[]> {
+  getUsers(year: number): Promise<User[]> {
     return this.http.get<User[]>("assets/mocks/users.json").toPromise();
   }
 }

@@ -17,5 +17,8 @@ namespace VacationTeamCalendar.DAL.Models
         public DateTime To { get; set; }
 
         public bool IsCountryHoliday { get; set; }
+
+        public int? UserId { get; set; }
+        public UserDbModel User { get; set; }
     }
 }

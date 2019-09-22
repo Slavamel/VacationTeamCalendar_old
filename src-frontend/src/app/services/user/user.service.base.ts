@@ -6,7 +6,7 @@ import { User } from 'src/app/models/user.model';
   providedIn: 'root',
 })
 export class UserServiceBase {
-  getUsers(): Promise<User[]> {
+  getUsers(year: number): Promise<User[]> {
     throw new Error("Not implemented");
   }
 }

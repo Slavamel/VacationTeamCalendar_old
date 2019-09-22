@@ -21,7 +21,7 @@ namespace VacationTeamCalendar.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _holidaysRetriever.GetCountryHolidays(2019);
+            var result = _holidaysRetriever.GetAllUsersHolidays(2019);
             return Ok(result);
         }
 

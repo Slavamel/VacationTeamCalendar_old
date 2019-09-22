@@ -17,9 +17,16 @@ namespace VacationTeamCalendar.API.Controllers
         }
 
         [HttpGet("get-country-holidays/{year}")]
-        public IActionResult Index(int year)
+        public IActionResult GetCountryHolidays(int year)
         {
             var holidays = _holidaysRetriever.GetCountryHolidays(year);
+            return Ok(holidays);
+        }
+
+        [HttpGet("get-all-users-holidays/{year}")]
+        public IActionResult GetAllUsersHolidays(int year)
+        {
+            var holidays = _holidaysRetriever.GetAllUsersHolidays(year);
             return Ok(holidays);
         }
     }

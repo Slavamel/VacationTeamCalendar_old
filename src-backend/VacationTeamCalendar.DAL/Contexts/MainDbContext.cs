@@ -10,11 +10,12 @@ namespace VacationTeamCalendar.DAL.Contexts
         {
         }
 
-//        public DbSet<UserDbModel> Users { get; set; }
+        public DbSet<UserDbModel> Users { get; set; }
         public DbSet<HolidayDbModel> Holidays { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserDbModel>().HasIndex(u => u.Login).IsUnique();
         }
     }
 }

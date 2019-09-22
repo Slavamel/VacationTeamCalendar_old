@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VacationTeamCalendar.DAL.Models
@@ -8,10 +9,15 @@ namespace VacationTeamCalendar.DAL.Models
     {
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50), Required]
         public string Login { get; set; }
 
         [MaxLength(50), Required]
         public string Name { get; set; }
+
+        [MaxLength(20), Required]
+        public string HexColor { get; set; }
+
+        public IEnumerable<HolidayDbModel> Holidays { get; set; }
     }
 }
