@@ -13,34 +13,33 @@ export class StyleService {
   }
 
   removeUserStyles(user: User): void {
-    let month: any;
-    for(month in user.vacation) {
-      let daysArr = user.vacation[month];
+    this.chageUserStyles(user, false);
+  }
+
+  addUserStyles(user: User): void {
+    this.chageUserStyles(user, true);
+  }
+
+  private chageUserStyles(user: User, isAdding: boolean): void {
+    for(let y = 0; y < user.holidays.length; y++) {
+      let daysArr = user.holidays[y].days;
+
       for(let i = 0; i < daysArr.length; i++) {
-        var id = `date-${month}-${daysArr[i]}`;
-        var elem = document.getElementById(id);
-        let className = `user-${user.id}`;
-        elem.classList.remove(className);
-        if (i == 0) elem.classList.remove('first-vacation-day');
-        if (i == (user.vacation[month].length - 1)) elem.classList.remove('last-vacation-day');
+        var elem = document.getElementById(`date-${user.holidays[y].month}-${daysArr[i]}`);
+
+        if (isAdding) {
+          elem.classList.add(`user-${user.id}`);
+          if (i == 0) elem.classList.add('first-vacation-day');
+          if (i == (daysArr.length - 1)) elem.classList.add('last-vacation-day');
+        } else {
+          elem.classList.remove(`user-${user.id}`);
+          if (i == 0) elem.classList.remove('first-vacation-day');
+          if (i == (daysArr.length - 1)) elem.classList.remove('last-vacation-day');
+        }
       }
     }
   }
 
-  addUserStyles(user: User): void {
-    let month: any;
-    for(month in user.vacation) {
-      let daysArr = user.vacation[month];
-      for(let i = 0; i < daysArr.length; i++) {
-        var id = `date-${month}-${daysArr[i]}`;
-        var elem = document.getElementById(id);
-        let className = `user-${user.id}`;
-        elem.classList.add(className);
-        if (i == 0) elem.classList.add('first-vacation-day');
-        if (i == (user.vacation[month].length - 1)) elem.classList.add('last-vacation-day');
-      }
-    }
-  }
   private addGlobalCalsses(users: User[]): void {
     let style = document.createElement('style');
     for(let i = 0; i < users.length; i++) {
