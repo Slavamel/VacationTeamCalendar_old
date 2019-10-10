@@ -1,0 +1,33 @@
+.load {
+  margin: auto;
+  display: flex;
+  position: relative;
+}
+
+.circle {
+  border: 3px dashed #55efc4;
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+  animation: move 5s infinite linear;
+}
+
+.text {
+  font-size: 12px;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  animation: colors 3s infinite linear;
+}
+
+@keyframes move {
+  from { transform: rotate(0) }
+  to { transform: rotate(360deg) }
+}
+
+@keyframes colors {
+  from { color: #1dd1a1; }
+  25% { color: #10ac84; }
+  75% { color: #01a3a4; }
+  to { color: #00d2d3; }
+}

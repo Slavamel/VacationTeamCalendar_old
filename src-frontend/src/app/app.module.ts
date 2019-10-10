@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { AppServicesModule } from './modules/service.module';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { YearComponent } from './components/year/year.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
-    YearComponent
+    YearComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
