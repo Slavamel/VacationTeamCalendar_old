@@ -15,7 +15,7 @@ import { StyleService } from 'src/app/services/style/style.service';
 export class CalendarComponent implements OnInit {
   monthes: Month[];
   users: User[];
-  year = 2019;
+  year = new Date().getFullYear();
 
   constructor(
     private calendarService: CalendarService, 
@@ -24,7 +24,7 @@ export class CalendarComponent implements OnInit {
     private styleService: StyleService) { }
 
   ngOnInit() {
-    this.init();
+    this.init(this.year);
   }
 
   isHoliday(dayNumber: number, isHoliday: boolean): boolean {
@@ -44,16 +44,20 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  private init(): void {
-    this.holidayService.getCountryHolidays(this.year)
+  onCurrentYearChanged(year: number): void {
+    this.init(year);
+  }
+
+  private init(year: number): void {
+    this.holidayService.getCountryHolidays(year)
       .then((holidays) => {
-        this.monthes = this.calendarService.getCalendar(2019, holidays);
-        this.getUsers();
+        this.monthes = this.calendarService.getCalendar(year, holidays);
+        this.getUsers(year);
       });
   }
 
-  private getUsers(): void {
-    this.userService.getUsers(this.year)
+  private getUsers(year: number): void {
+    this.userService.getUsers(year)
       .then((users) => this.handleGetUsersResponse(users));
   }
 

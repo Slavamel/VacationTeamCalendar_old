@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
@@ -31,13 +31,16 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class YearComponent implements OnInit {
+  @Output() currentYearChange = new EventEmitter<number>();
+
   state = 'normal';
-  years = [2018, 2019, 2020];
+  years: number[];
   currentYearIndex = 1;
 
   constructor() { }
 
   ngOnInit() {
+    this.initYears();
   }
 
   onYearClicked(index: number) {
@@ -53,6 +56,11 @@ export class YearComponent implements OnInit {
         break;
     }
     this.currentYearIndex = index;
+    this.currentYearChange.emit(this.years[index]);
   }
 
+  private initYears(): void {
+    const currentYear = new Date().getFullYear();
+    this.years = [currentYear - 1, currentYear, currentYear + 1];
+  }
 }
