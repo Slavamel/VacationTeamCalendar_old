@@ -6,12 +6,11 @@
   grid-template-rows: 35px repeat(3, 1fr);
   grid-gap: 10px 20px;
   margin-bottom: 50px;
+  color: #2c3e50;
 }
 
 .year {
   grid-column: span 4;
-  font-weight: 500;
-  font-size: 22px;
 }
 
 .month {
@@ -46,7 +45,7 @@
 }
 
 .holiday {
-  color: red;
+  color: #e74c3c;
 }
 
 .users {

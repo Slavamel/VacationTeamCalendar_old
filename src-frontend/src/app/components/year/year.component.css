@@ -1,0 +1,12 @@
+.years-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: auto;
+  height: 22px;
+  width: 130px;
+}
+
+.year {
+  cursor: pointer;
+}

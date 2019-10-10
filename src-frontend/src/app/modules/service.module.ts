@@ -9,8 +9,8 @@ import { UserServiceReal } from '../services/user/user.service.real';
 
 @NgModule({
   providers: [ 
-    { provide: HolidayServiceBase, useClass: HolidayServiceReal },
-    { provide: UserServiceBase, useClass: UserServiceReal }
+    { provide: HolidayServiceBase, useClass: HolidayServiceMock },
+    { provide: UserServiceBase, useClass: UserServiceMock }
    ]
 })
 export class AppServicesModule { }

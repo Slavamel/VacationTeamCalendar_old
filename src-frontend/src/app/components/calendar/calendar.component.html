@@ -1,5 +1,7 @@
 <div class="calendar">
-  <div class="year">{{year}}</div>
+  <div class="year">
+    <app-year></app-year>
+  </div>
   <div class="month" *ngFor="let month of monthes; index as monthNum">
     <div class="month-name">{{ month.name }}</div>
     <div class="day-name">MON</div>
