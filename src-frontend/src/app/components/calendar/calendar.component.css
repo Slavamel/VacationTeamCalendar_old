@@ -88,3 +88,8 @@
 .last-vacation-day {
   border-bottom-right-radius: 30%;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+}

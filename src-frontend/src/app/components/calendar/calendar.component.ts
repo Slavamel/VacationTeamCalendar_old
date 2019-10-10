@@ -17,6 +17,8 @@ export class CalendarComponent implements OnInit {
   users: User[];
   year = new Date().getFullYear();
 
+  isLoading = false;
+
   constructor(
     private calendarService: CalendarService, 
     private holidayService: HolidayServiceBase,
@@ -49,6 +51,9 @@ export class CalendarComponent implements OnInit {
   }
 
   private init(year: number): void {
+    this.isLoading = true;
+    this.monthes = null;
+    this.users = null;
     this.holidayService.getCountryHolidays(year)
       .then((holidays) => {
         this.monthes = this.calendarService.getCalendar(year, holidays);
@@ -58,7 +63,8 @@ export class CalendarComponent implements OnInit {
 
   private getUsers(year: number): void {
     this.userService.getUsers(year)
-      .then((users) => this.handleGetUsersResponse(users));
+      .then((users) => this.handleGetUsersResponse(users))
+      .finally(() => this.isLoading = false);
   }
 
   private handleGetUsersResponse(users: User[]): void {
