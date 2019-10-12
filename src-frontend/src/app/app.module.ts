@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppServicesModule } from './modules/service.module';
 import { VacationComponent } from './components/vacation/vacation.component';
-import { YearComponent } from './components/year/year.component';
-import { LoadingComponent } from './components/loading/loading.component';
+import { YearComponent } from './components/common/year/year.component';
+import { LoadingComponent } from './components/common/loading/loading.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CalendarComponent } from './components/common/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MenuComponent } from './components/menu/menu.component';
     VacationComponent,
     YearComponent,
     LoadingComponent,
-    MenuComponent
+    MenuComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

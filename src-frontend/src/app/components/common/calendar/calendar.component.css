@@ -1,0 +1,49 @@
+.calendar {
+  display: grid;
+  max-width: 1000px;
+  margin: auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 35px repeat(3, 1fr);
+  grid-gap: 10px 20px;
+  margin-bottom: 50px;
+  color: #2c3e50;
+}
+
+.year {
+  grid-column: span 4;
+}
+
+.month {
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  grid-template-rows: repeat(8, 30px);
+}
+
+.month-name {
+  grid-column: span 7;
+  text-transform: uppercase;
+}
+
+.year,
+.month-name,
+.day-name,
+.date {
+  text-align: center;
+}
+
+.day-name {
+  align-self: center;
+  color: grey;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.date {
+  place-self: stretch;
+  line-height: 2;
+}
+
+.holiday {
+  color: #e74c3c;
+}

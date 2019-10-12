@@ -1,24 +1,5 @@
 <div class="calendar">
-  <section class="year">
-    <app-year (currentYearChange)="onCurrentYearChanged($event)"></app-year>
-  </section>
-  <div class="month" *ngFor="let month of monthes; index as monthNum">
-    <div class="month-name">{{ month.name }}</div>
-    <div class="day-name">MON</div>
-    <div class="day-name">TUE</div>
-    <div class="day-name">WED</div>
-    <div class="day-name">THU</div>
-    <div class="day-name">FRI</div>
-    <div class="day-name">SAT</div>
-    <div class="day-name">SUN</div>
-
-    <ng-container *ngFor="let weeks of month.weeks">
-      <ng-container *ngFor="let day of weeks; index as i">
-        <div id="{{getDateId(monthNum, day.date)}}" class="date" [ngClass]="{ holiday: isHoliday(i, day.isHoliday) }">{{day.date}}</div>
-      </ng-container>
-    </ng-container>
-
-  </div>
+  <app-calendar (calendarLoaded)="onCalendarLoaded($event)"></app-calendar>
 </div>
 
 <div *ngIf="isLoading" class="loading">
