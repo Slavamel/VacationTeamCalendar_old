@@ -19,7 +19,7 @@ button {
   top: 0;
   left: 0;
   background-color: #fff;
-  width: 175px;
+  width: 220px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -32,19 +32,35 @@ button {
   user-select: none;
 }
 
-.country-link {
+.link {
+  width: 100%;
   border-radius: 3px;
   padding: 10px 5px;
-  color: #ffa801;
   cursor: pointer;
   font-weight: 500;
   font-size: 18px;
 }
 
-.country-link:hover {
+.country-holidays {
+  color: #ffa801;
+}
+
+.country-holidays:hover {
   background-color: rgba(255, 168, 1, 0.2);
 }
 
-.country-link:active {
+.country-holidays:active {
   background-color: rgba(255, 168, 1, 0.4);
+}
+
+.user-vacation {
+  color: #27ae60
+}
+
+.user-vacation:hover {
+  background-color: rgba(39, 174, 96, 0.2);
+}
+
+.user-vacation:active {
+  background-color: rgba(39, 174, 96, 0.4);
 }
