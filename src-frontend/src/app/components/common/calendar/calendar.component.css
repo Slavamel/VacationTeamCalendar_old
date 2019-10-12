@@ -42,17 +42,17 @@
 .date {
   place-self: stretch;
   line-height: 2;
+  transition: 0.3s;
 }
 
 .holiday {
   color: #e74c3c;
-  transition: 0.5s;
 }
 
 .highlight-holiday {
   background-color: #e74c3c;
   color: #fff;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .clickable-date {
