@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { Month } from 'src/app/models/month.model';
 import { HolidayServiceBase } from 'src/app/services/holiday/holiday.service.base';
@@ -11,6 +11,8 @@ import { CalendarService } from 'src/app/services/calendar/calendar.service';
 })
 export class CalendarComponent implements OnInit {
   @Output() calendarLoaded = new EventEmitter<number>();
+  @Output() dateClicked = new EventEmitter<string>();
+  @Input() isClickableCountryHolidays = false;
   monthes: Month[];
   year = new Date().getFullYear();
   isLoading = false;
@@ -27,13 +29,13 @@ export class CalendarComponent implements OnInit {
     this.init(year);
   }
 
-  isHoliday(dayNumber: number, isHoliday: boolean): boolean {
-    return dayNumber > 4 || isHoliday;
-  }
-
   getDateId(monthNum: number, date: number): string {
     if (!date) return "";
     return "date-" + (monthNum + 1) + "-" + date;
+  }
+
+  onDateClicked(dateId: string): void {
+    this.dateClicked.emit(dateId);
   }
 
   private init(year: number): void {

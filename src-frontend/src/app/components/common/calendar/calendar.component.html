@@ -14,7 +14,15 @@
 
     <ng-container *ngFor="let weeks of month.weeks">
       <ng-container *ngFor="let day of weeks; index as i">
-        <div id="{{getDateId(monthNum, day.date)}}" class="date" [ngClass]="{ holiday: isHoliday(i, day.isHoliday) }">{{day.date}}</div>
+        <div 
+          id="{{getDateId(monthNum, day.date)}}" 
+          class="date" 
+          (click)="onDateClicked(getDateId(monthNum, day.date))"
+          [ngClass]="{ 
+            'holiday': i > 4 || day.isHoliday, 
+            'clickable-date': isClickableCountryHolidays, 
+            'highlight-holiday': day.isHoliday && isClickableCountryHolidays
+          }">{{day.date}}</div>
       </ng-container>
     </ng-container>
   </div>

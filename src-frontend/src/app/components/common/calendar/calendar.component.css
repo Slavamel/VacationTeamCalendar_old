@@ -46,4 +46,15 @@
 
 .holiday {
   color: #e74c3c;
+  transition: 0.5s;
+}
+
+.highlight-holiday {
+  background-color: #e74c3c;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.clickable-date {
+  cursor: pointer;
 }

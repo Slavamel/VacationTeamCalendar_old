@@ -20,6 +20,16 @@ export class StyleService {
     this.chageUserStyles(user, true);
   }
 
+  toggleHighlightHolidayClass(elementId): void {
+    const elem = document.getElementById(elementId);
+    let isHighlighted = elem.classList.contains('highlight-holiday');
+    if (isHighlighted) {
+      elem.classList.remove('highlight-holiday');
+    } else {
+      elem.classList.add('highlight-holiday');
+    }
+  }
+
   private chageUserStyles(user: User, isAdding: boolean): void {
     for(let y = 0; y < user.holidays.length; y++) {
       let daysArr = user.holidays[y].days;

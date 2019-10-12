@@ -11,6 +11,7 @@ import { YearComponent } from './components/common/year/year.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CalendarComponent } from './components/common/calendar/calendar.component';
+import { CountryHolidaysComponent } from './components/country-holidays/country-holidays.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CalendarComponent } from './components/common/calendar/calendar.compone
     YearComponent,
     LoadingComponent,
     MenuComponent,
-    CalendarComponent
+    CalendarComponent,
+    CountryHolidaysComponent
   ],
   imports: [
     BrowserModule,
