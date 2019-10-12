@@ -1,7 +1,7 @@
 <div class="calendar">
-  <div class="year">
+  <section class="year">
     <app-year (currentYearChange)="onCurrentYearChanged($event)"></app-year>
-  </div>
+  </section>
   <div class="month" *ngFor="let month of monthes; index as monthNum">
     <div class="month-name">{{ month.name }}</div>
     <div class="day-name">MON</div>

@@ -8,5 +8,9 @@
 }
 
 .year {
+  cursor: default;
+}
+
+.clickable {
   cursor: pointer;
 }

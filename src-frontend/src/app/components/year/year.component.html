@@ -5,7 +5,8 @@
         [@positionState]="state" 
         [@fontSize]="currentYearIndex == i ? 'big' : 'small'"
         (click)="currentYearIndex != i ? onYearClicked(i) : false"
-        class="year">{{year}}</div>
+        class="year"
+        [ngClass]="{ 'clickable': currentYearIndex != i }">{{year}}</div>
     </div>
   </div>
 </div>
