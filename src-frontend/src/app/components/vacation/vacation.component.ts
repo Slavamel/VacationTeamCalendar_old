@@ -8,11 +8,11 @@ import { User } from 'src/app/models/user.model';
 import { StyleService } from 'src/app/services/style/style.service';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  selector: 'app-vacation',
+  templateUrl: './vacation.component.html',
+  styleUrls: ['./vacation.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class VacationComponent implements OnInit {
   monthes: Month[];
   users: User[];
   year = new Date().getFullYear();
