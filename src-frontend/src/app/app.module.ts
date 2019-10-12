@@ -9,13 +9,15 @@ import { AppServicesModule } from './modules/service.module';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { YearComponent } from './components/year/year.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
     YearComponent,
-    LoadingComponent
+    LoadingComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

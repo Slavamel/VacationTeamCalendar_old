@@ -1,0 +1,50 @@
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+}
+
+.toggle-btn {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.menu {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 175px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: -35px;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+
+.country-link {
+  border-radius: 3px;
+  padding: 10px 5px;
+  color: #ffa801;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.country-link:hover {
+  background-color: rgba(255, 168, 1, 0.2);
+}
+
+.country-link:active {
+  background-color: rgba(255, 168, 1, 0.4);
+}

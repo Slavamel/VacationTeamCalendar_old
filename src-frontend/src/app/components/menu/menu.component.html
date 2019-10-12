@@ -1,0 +1,8 @@
+<div class="container">
+  <div (click)="onOpen()" class="toggle-btn">🔧</div>
+  
+  <div *ngIf="isMenuVisible" class="menu" [@appearing]="void">
+    <button (click)="onClose()" class="close-btn">❌</button>
+    <button class="country-link">Country holidays 🎉</button>
+  </div>
+</div>
