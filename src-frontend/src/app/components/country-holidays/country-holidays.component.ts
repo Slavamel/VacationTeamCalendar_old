@@ -10,8 +10,7 @@ export class CountryHolidaysComponent implements OnInit {
 
   constructor(private styleService: StyleService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onDateClicked(dateId: string): void {
     this.styleService.toggleHighlightHolidayClass(dateId);

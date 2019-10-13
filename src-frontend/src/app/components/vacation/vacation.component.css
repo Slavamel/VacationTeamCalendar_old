@@ -31,10 +31,6 @@
   color: #000;
 }
 
-.first-vacation-day {
-  border-top-left-radius: 30%;
-}
-
-.last-vacation-day {
-  border-bottom-right-radius: 30%;
+.calendar {
+  margin-bottom: 50px;
 }

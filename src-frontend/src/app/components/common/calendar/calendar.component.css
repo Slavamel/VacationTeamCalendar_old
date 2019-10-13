@@ -42,6 +42,7 @@
   place-self: stretch;
   line-height: 2;
   transition: 0.3s;
+  cursor: default;
 }
 
 .holiday {
@@ -56,4 +57,12 @@
 
 .clickable-date {
   cursor: pointer;
+}
+
+.first-vacation-day {
+  border-top-left-radius: 30%;
+}
+
+.last-vacation-day {
+  border-bottom-right-radius: 30%;
 }

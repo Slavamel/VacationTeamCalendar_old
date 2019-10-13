@@ -31,23 +31,41 @@ export class StyleService {
   }
 
   private chageUserStyles(user: User, isAdding: boolean): void {
-    for(let y = 0; y < user.holidays.length; y++) {
-      let daysArr = user.holidays[y].days;
+    for(let i = 0; i < user.holidays.length; i++) {
+      const currentDate = new Date(user.holidays[i].startDate);
+      const endDate = user.holidays[i].endDate;
 
-      for(let i = 0; i < daysArr.length; i++) {
-        var elem = document.getElementById(`date-${user.holidays[y].month}-${daysArr[i]}`);
-
+      while (true) {
+        var elem = document.getElementById(this.convertDateToDateId(currentDate));
         if (isAdding) {
           elem.classList.add(`user-${user.id}`);
-          if (i == 0) elem.classList.add('first-vacation-day');
-          if (i == (daysArr.length - 1)) elem.classList.add('last-vacation-day');
         } else {
           elem.classList.remove(`user-${user.id}`);
-          if (i == 0) elem.classList.remove('first-vacation-day');
-          if (i == (daysArr.length - 1)) elem.classList.remove('last-vacation-day');
         }
+
+        if (currentDate.getTime() == endDate.getTime()) break;
+        currentDate.setDate(currentDate.getDate() + 1);
       }
+
+      // for(let k = 0; k < daysArr.length; k++) {
+      //   var elem = document.getElementById(`date-${user.holidays[k].month}-${daysArr[k]}`);
+
+      //   if (isAdding) {
+      //     elem.classList.add(`user-${user.id}`);
+      //     if (k == 0) elem.classList.add('first-vacation-day');
+      //     if (k == (daysArr.length - 1)) elem.classList.add('last-vacation-day');
+      //   } else {
+      //     elem.classList.remove(`user-${user.id}`);
+      //     if (k == 0) elem.classList.remove('first-vacation-day');
+      //     if (k == (daysArr.length - 1)) elem.classList.remove('last-vacation-day');
+      //   }
+      // }
     }
+  }
+
+  private convertDateToDateId(date: Date): string {
+    const dateId = `date-${date.getMonth()+1}-${date.getDate()}`;
+    return dateId;
   }
 
   private addGlobalCalsses(users: User[]): void {

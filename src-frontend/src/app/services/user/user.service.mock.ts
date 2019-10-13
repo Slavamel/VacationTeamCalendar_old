@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 import { User } from 'src/app/models/user.model';
 import { UserServiceBase } from './user.service.base';
@@ -12,6 +12,10 @@ export class UserServiceMock extends UserServiceBase {
   constructor(private http: HttpClient) { super(); }
 
   getUsers(year: number): Promise<User[]> {
-    return this.http.get<User[]>("assets/mocks/users.json").pipe(delay(2000)).toPromise();
+    return this.http.get<User[]>("assets/mocks/users.json")
+      .pipe(
+        delay(2000),
+        map(this.convertToDates)
+      ).toPromise();
   }
 }
