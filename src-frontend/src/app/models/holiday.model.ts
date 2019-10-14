@@ -1,4 +1,5 @@
 export class Holiday {
+  id: number;
   startDate: Date;
   endDate: Date;
 

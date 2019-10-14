@@ -11,7 +11,8 @@ import { CalendarService } from 'src/app/services/calendar/calendar.service';
 })
 export class CalendarComponent implements OnInit {
   @Output() calendarLoaded = new EventEmitter<number>();
-  @Output() dateClicked = new EventEmitter<string>();
+  @Output() dateClicked = new EventEmitter<Date>();
+  @Output() mouserOver = new EventEmitter<Date>();
   @Input() isClickableCountryHolidays = false;
   monthes: Month[];
   year = new Date().getFullYear();
@@ -34,8 +35,14 @@ export class CalendarComponent implements OnInit {
     return "date-" + (monthNum + 1) + "-" + date;
   }
 
-  onDateClicked(dateId: string): void {
-    this.dateClicked.emit(dateId);
+  onDateClicked(monthNum: number, day: number): void {
+    const date = new Date(this.year, monthNum, day);
+    this.dateClicked.emit(date);
+  }
+
+  onMouseOver(monthNum: number, day: number): void {
+    const date = new Date(this.year, monthNum, day);
+    this.mouserOver.emit(date);
   }
 
   private init(year: number): void {

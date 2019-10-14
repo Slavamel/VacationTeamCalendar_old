@@ -47,9 +47,9 @@ export class CalendarService {
       if (day > daysInMonth && week.length == 0) { break; }
 
       if (i < firstDay || day > daysInMonth) {
-        week.push(new Day("", false));
+        week.push(new Day(null, null));
       } else {
-        week.push(new Day(day.toString(), this.isHoliday(monthNumber, day, year)));
+        week.push(new Day(day, this.getHolidayId(monthNumber, day, year)));
         day++;
       }
 
@@ -64,9 +64,9 @@ export class CalendarService {
     return result;
   }
 
-  private isHoliday(monthNumber: number, day: number, year: number): boolean {
+  private getHolidayId(monthNumber: number, day: number, year: number): number {
     const checkingDate = new Date(`${year}-${monthNumber}-${day}`);
-    const isHoliday = this.holidays.some(h => h.startDate.getTime() <= checkingDate.getTime() && h.endDate.getTime() >= checkingDate.getTime());
-    return isHoliday;
+    const holiday = this.holidays.find(h => h.startDate.getTime() <= checkingDate.getTime() && h.endDate.getTime() >= checkingDate.getTime());
+    return holiday ? holiday.id : null;
   }
 }

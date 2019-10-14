@@ -17,12 +17,12 @@
         <div 
           id="{{getDateId(monthNum, day.date)}}" 
           class="date" 
-          (click)="onDateClicked(getDateId(monthNum, day.date))"
-          [ngClass]="{ 
-            'holiday': i > 4 || day.isHoliday, 
-            'clickable-date': isClickableCountryHolidays, 
-            'highlight-holiday': day.isHoliday && isClickableCountryHolidays
-          }">{{day.date}}</div>
+          (click)="onDateClicked(monthNum, day.date)"
+          (mouseenter)="onMouseOver(monthNum, day.date)"
+          [ngClass]="{{ day.holidayId : true }}"
+          [class.highlight-holiday]="day.holidayId && isClickableCountryHolidays"
+          [class.holiday]="i > 4 || day.holidayId"
+          [class.clickable-date]="isClickableCountryHolidays">{{day.date}}</div>
       </ng-container>
     </ng-container>
   </div>

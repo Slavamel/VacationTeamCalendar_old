@@ -20,13 +20,35 @@ export class StyleService {
     this.chageUserStyles(user, true);
   }
 
-  toggleHighlightHolidayClass(elementId): void {
-    const elem = document.getElementById(elementId);
+  toggleHighlightHolidayClass(date: Date): void {
+    const elem = document.getElementById(this.getDateIdFromDate(date));
     let isHighlighted = elem.classList.contains('highlight-holiday');
     if (isHighlighted) {
       elem.classList.remove('highlight-holiday');
     } else {
       elem.classList.add('highlight-holiday');
+    }
+  }
+
+  highlightBetweenTwoDates(startDate: Date, endDate?: Date): void {
+    if (endDate && startDate.getTime() > endDate.getTime()) {
+      const elem = document.getElementById(this.getDateIdFromDate(startDate));
+      elem.classList.remove('highlight-holiday');
+      return;
+    }
+
+    if (!endDate) {
+      const elem = document.getElementById(this.getDateIdFromDate(startDate));
+      let isHighlighted = elem.classList.contains('highlight-holiday');
+      elem.classList.add('highlight-holiday');
+    } else {
+      const currentDate = new Date(startDate);
+      while (true) {
+        var elem = document.getElementById(this.getDateIdFromDate(currentDate));
+        elem.classList.add('highlight-holiday');
+        if (currentDate.getTime() == endDate.getTime()) break;
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
     }
   }
 
@@ -36,7 +58,7 @@ export class StyleService {
       const endDate = user.holidays[i].endDate;
 
       while (true) {
-        var elem = document.getElementById(this.convertDateToDateId(currentDate));
+        var elem = document.getElementById(this.getDateIdFromDate(currentDate));
         if (isAdding) {
           elem.classList.add(`user-${user.id}`);
         } else {
@@ -46,24 +68,10 @@ export class StyleService {
         if (currentDate.getTime() == endDate.getTime()) break;
         currentDate.setDate(currentDate.getDate() + 1);
       }
-
-      // for(let k = 0; k < daysArr.length; k++) {
-      //   var elem = document.getElementById(`date-${user.holidays[k].month}-${daysArr[k]}`);
-
-      //   if (isAdding) {
-      //     elem.classList.add(`user-${user.id}`);
-      //     if (k == 0) elem.classList.add('first-vacation-day');
-      //     if (k == (daysArr.length - 1)) elem.classList.add('last-vacation-day');
-      //   } else {
-      //     elem.classList.remove(`user-${user.id}`);
-      //     if (k == 0) elem.classList.remove('first-vacation-day');
-      //     if (k == (daysArr.length - 1)) elem.classList.remove('last-vacation-day');
-      //   }
-      // }
     }
   }
 
-  private convertDateToDateId(date: Date): string {
+  private getDateIdFromDate(date: Date): string {
     const dateId = `date-${date.getMonth()+1}-${date.getDate()}`;
     return dateId;
   }

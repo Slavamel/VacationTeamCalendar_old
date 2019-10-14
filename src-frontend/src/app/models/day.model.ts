@@ -1,9 +1,9 @@
 export class Day {
-    date: string;
-    isHoliday: boolean;
+    date: number;
+    holidayId: number;
   
-    constructor(date: string, isHoliday: boolean) {
+    constructor(date: number, holidayId: number) {
       this.date = date;
-      this.isHoliday = isHoliday;
+      this.holidayId = holidayId;
     }
   }
